@@ -1,6 +1,8 @@
 import React from 'react';
-import PropTypes from"prop-types"; //npm i prop-types
+//import PropTypes from"prop-types"; //npm i prop-types
 
+
+/*
 const foodILike = [
   {
   id:1,
@@ -38,5 +40,61 @@ function App() {
       </div>
   );
 }
+*/
 
+/*
+class App extends React.Component{
+  constructor(props){
+  super(props);
+  console.log("hello");
+  }
+  state={
+    count:0
+  }//state=> object, 동적인 데이터
+  
+  add = () =>{ 
+    this.setState(current=>({count:current.count+1})); //setState를 사용하면 자동으로 refresh
+  };
+  minus = () =>{ 
+    this.setState(current=>({count:current.count-1})); 
+  };
+
+
+  componentDidMount(){
+    console.log("component rendered");
+  }
+
+  componentDidUpdate(){
+    console.log("I just updated");
+  }
+
+  render(){ //react는 자동적으로 class component의 render method를 실행함
+    console.log("I'm rendering");
+    return(
+    <div>
+      <h1>The number is : {this.state.count}</h1>
+      <button onClick={this.add}>Add</button>
+      <button onClick={this.minus}>Minus</button>
+    </div>
+    );
+  }
+  //setState를 호출할 때 마다 react는 새로운 state와 함께 render function을 호출
+}
+*/
+
+class App extends React.Component{
+  state={
+    isLoading:true,
+    movies: []
+  }
+  componentDidMount(){
+    setTimeout(()=>{this.setState({isLoading:false});},6000);
+  }
+  render(){
+    const {isLoading} = this.state;
+    return (<div>
+      {isLoading ? "Loading..." : "We are ready"}
+    </div>);
+  }
+}
 export default App;
